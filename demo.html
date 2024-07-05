@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Z-index demo</title>
+    <link rel="stylesheet" href="demo.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="demo">
+        <div class="block">
+          <div class="blue"></div>
+          <div class="red demo1"></div>
+        </div>
+        <div class="text">
+          <h3>web default</h3>
+          <xmp>
+<div class="blue"></div>
+<div class="red"></div>
+          </xmp>
+          <xmp
+>
+div {
+  width: 100px;
+  height: 100px;
+}
+.red {
+  transform: translate(25%, -25%);
+}
+            </xmp
+          >
+        </div>
+        <div class="explain">
+          <h2>🌿 Web default</h2>
+          <h4>✊🏼 Stacking Context</h4>
+          <h4>rendered in the order they appear in the HTML</h4>
+          <h4>it will stack on top of the "blue" div.</h4>
+          <h4>
+            First of all, z-index only works on positioned elements. If you try
+            to set a z-index on an element with no position specified, it will
+            do nothing. Secondly, z-index values can create stacking contexts
+          </h4>
+        </div>
+      </div>
+
+      <!-- relative example -->
+
+      <div class="demo">
+        <div class="block">
+          <div class="blue demo2"></div>
+          <div class="red demo2"></div>
+        </div>
+        <div class="text">
+          <h3>relative default</h3>
+          <xmp>
+<div class="blue"></div>
+<div class="red"></div>
+          </xmp>
+          <xmp
+>    
+div {
+    width: 100px;
+    height: 100px;
+    position: relative;
+}
+
+.red {
+    transform: translate(25%, -25%);
+}
+            </xmp
+          >
+        </div>
+        <div class="explain">
+          <h2>🎯 Sibling Elements</h2>
+          <h2>🌿 3 Scenarios</h2>
+          <h4>
+            1. **Default Behavior:** Both `div` elements not setting `position`
+            <br />
+            (just like the first example)
+          </h4>
+          <h4>
+            2. **Default Stacking:** Both `div` elements setting `position`, but
+            no `z-index`
+          </h4>
+          <h4>
+            3. **Relative Positioning with Same `z-index`:**
+            <br />
+            Both `div` elements setting `position`, and same `z-index`
+          </h4>
+          <h4>it will stack on top of the "blue" div.</h4>
+        </div>
+      </div>
+      <div class="demo">
+        <div class="block">
+          <div class="blue demo3"></div>
+          <div class="red demo3"></div>
+        </div>
+        <div class="text">
+          <h3>relative and both set z-index</h3>
+          <xmp>
+<div class="blue"></div>
+<div class="red"></div>        
+          </xmp>
+
+          <xmp
+>
+div {
+    width: 100px;
+    height: 100px;
+    position: relative;
+}
+
+.blue {
+    z-index: 2;
+}
+
+.red {
+    transform: translate(25%, -25%);
+    z-index: 1;
+}
+            </xmp
+          >
+        </div>
+        <div class="explain">
+          <h2>🎯 Sibling Elements</h2>
+          <h2>🌿 if both set position, they will compare Z-index</h2>
+        </div>
+      </div>
+
+      <div class="demo">
+        <div class="block">
+          <div class="blue demo4"></div>
+          <div class="red demo4"></div>
+        </div>
+        <div class="text">
+          <h3>relative and only one set z-index</h3>
+          <xmp>
+<div class="blue"></div>
+<div class="red"></div>
+          </xmp>
+          <xmp
+>    
+div {
+    width: 100px;
+    height: 100px;
+    position: relative;
+}
+
+.blue {
+    /* NO setting z-index */
+}
+
+.red {
+    transform: translate(25%, -25%);
+    z-index: -1;
+}
+            </xmp
+          >
+        </div>
+        <div class="explain">
+          <h2>🎯 Sibling Elements</h2>
+          <h2>🌿 if only one set z-index, what will happend?</h2>
+          <h4>1. z-index = 0 -> will same as the web default</h4>
+          <h4>2. z-index > 0 -> will overlap the one didn't set Z-index</h4>
+          <h4>
+            3. z-index < 0 -> the one didn't set Z-index will overlap the one
+            set negitive number
+          </h4>
+        </div>
+      </div>
+
+      <!-- parent example -->
+      <div class="demo">
+        <div class="block">
+          <div class="blue parent demo5">
+            <div class="red child demo5"></div>
+          </div>
+        </div>
+        <div class="text">
+          <h3>only child set z-index</h3>
+          <xmp>
+<div class="blue parent">
+  <div class="red child"></div>
+</div>
+          </xmp>
+          <xmp
+>
+div {
+    width: 100px;
+    height: 100px;
+}
+
+.blue.parent {
+    position: unset;
+    /* NO setting z-index */
+}
+
+.red.child {
+    position: relative;
+    transform: translate(25%, -25%);
+    z-index: -1;
+}
+            </xmp
+          >
+        </div>
+        <div class="explain">
+          <h2>🎯 Nested Elements (or Parent-Child) Elements</h2>
+          <h2>🌿 most of time, child div will overlap parent div</h2>
+          <h4>
+            BUT there is only one scenario where the parent will overlap the
+            child:
+            <br />
+            if parent didn't set position and child set position and z-index <
+            0,
+            <br />
+            parent will overlap child
+            <br />
+            (just like the example ⬅️)
+          </h4>
+        </div>
+      </div>
+
+      <div class="demo">
+        <div class="block">
+          <div class="blue parent demo6">
+            <div class="red child demo6"></div>
+          </div>
+        </div>
+        <div class="text">
+          <h3>parent and child both set z-index</h3>
+          <xmp>
+<div class="blue parent">
+  <div class="red child"></div>
+</div>
+          </xmp>
+          <xmp
+>
+div {
+    width: 100px;
+    height: 100px;
+}
+
+.blue.parent {
+    position: unset;
+    z-index: 999;
+}
+
+.red.child {
+    position: relative;
+    transform: translate(25%, -25%);
+    z-index: 1;
+}
+              </xmp
+          >
+        </div>
+        <div class="explain">
+          <h2>🎯 Nested Elements (or Parent-Child) Elements</h2>
+          <h4>
+            if parent set z-index, no matter how large z-index is, child will
+            always overlap parent.
+          </h4>
+        </div>
+      </div>
+
+      <div class="demo">
+        <div class="block">
+          <div class="green uncle demo7">
+            <div class="yellow cousin demo7"></div>
+          </div>
+          <div class="blue father demo7">
+            <div class="red you demo7"></div>
+          </div>
+        </div>
+        <div class="text">
+          <h3>parent child cousin and set z-index</h3>
+          <!-- <p>if parent set z-index, no matter how large z-index is, child will always overlap parent</p> -->
+          <xmp>
+<div class="green uncle">
+  <div class="yellow cousin"></div>
+</div>
+
+<div class="blue father">
+  <div class="red you"></div>
+</div>
+          </xmp>
+          <xmp
+>
+.green.uncle {
+  position: relative;
+  z-index: 1;
+}
+
+.yellow.cousin {
+  position: relative;
+  z-index: 999;
+  transform: translate(25%, 25%);
+}
+
+.blue.father {
+  position: relative;
+  z-index: 2;
+}
+
+.red.you {
+  position: relative;
+  z-index: -1;
+  transform: translate(50%, -25%);
+}
+              </xmp
+          >
+        </div>
+        <div class="explain">
+          <h2>🎯 Nested Elements within Sibling Groups</h2>
+          <h2>Sibling: uncle(green) & father(blue)</h2>
+          <h4>
+            if sibling set position, and z-index: father(blue) > uncle(green)
+          </h4>
+          <h4>cousin(yellow) will never overlap you(red)</h4>
+        </div>
+      </div>
+
+      <div class="demo">
+        <div class="block">
+          <div class="green uncle demo8"></div>
+          <div class="blue father demo8">
+            <div class="red you demo8"></div>
+          </div>
+        </div>
+        <div class="text">
+          <h3>child and uncle set position</h3>
+          <xmp>
+<div class="green uncle"></div>
+
+<div class="blue father">
+  <div class="red you"></div>
+</div>
+          </xmp>
+          <xmp
+>
+.green.uncle {
+  position: relative;
+}
+
+.blue.father {
+  position: unset;
+}
+
+.red.you {
+  position: relative;
+  transform: translate(50%, -25%);
+}
+              </xmp
+          >
+        </div>
+        <div class="explain">
+          <h2>🎯 Nested Element within Sibling Div</h2>
+          <h2>Sibling: uncle(green) & father(blue)</h2>
+          <h4>
+            if father(blue) didn't set position, uncle(green) will compare
+            you(red), ignore father(blue)
+          </h4>
+          <h4>
+            example here: you(red) after uncle(green)
+            <br />
+            so you(red) will overlap uncle(green)
+          </h4>
+        </div>
+      </div>
+
+      <div class="demo">
+        <div class="block">
+          <div class="green uncle demo9"></div>
+          <div class="blue father demo9">
+            <div class="red you demo9"></div>
+          </div>
+        </div>
+        <div class="text">
+          <h3>all set z-index, but father didn't set position</h3>
+          <xmp>
+<div class="green uncle"></div>
+
+<div class="blue father">
+  <div class="red you"></div>
+</div>
+          </xmp>
+          <xmp
+>
+.green.uncle {
+  position: relative;
+  z-index: 2;
+}
+
+.blue.father {
+  position: unset;
+  z-index: 3;
+}
+
+.red.you {
+  position: relative;
+  transform: translate(75%, -25%);
+  z-index: 1;
+}
+              </xmp
+          >
+        </div>
+        <div class="explain">
+          <h2>🎯 Nested Element within Sibling Div</h2>
+          <h2>Sibling: uncle(green) & father(blue)</h2>
+          <h4>
+            if father(blue) didn't set position, uncle(green) will compare
+            you(red)
+            <br />
+            STILL ignore father(blue)
+          </h4>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

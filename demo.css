@@ -1,0 +1,187 @@
+.container {
+  display: flex;
+  margin: 4em;
+  flex-direction: column;
+  height: 100%;
+}
+
+.demo {
+  display: flex;
+  flex-direction: row;
+  margin: 3em 0;
+  height: fit-content;
+}
+
+.text {
+  margin-left: 10em;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  width: fit-content;
+}
+
+div {
+  width: 100px;
+  height: 100px;
+}
+
+.explain {
+  margin-left: 3em;
+}
+
+h2,
+h4 {
+  /* margin-left: 3em; */
+  white-space: nowrap;
+}
+
+h3 {
+  white-space: nowrap;
+  margin: 0;
+}
+
+xmp {
+  margin: 0;
+  background-color: #f4f4f4;
+  margin-top: 1em;
+  width: fit-content;
+  padding: 0 5em;
+}
+
+/* -------- color --------- */
+
+.blue {
+  background-color: #84cdee;
+}
+
+.red {
+  background-color: #eb2d3a;
+}
+
+.green {
+  background-color: #6ec175;
+}
+
+.yellow {
+  background-color: #fff49b;
+}
+
+/* -------- demo1 --------- */
+
+.demo1 {
+  transform: translate(25%, -25%);
+}
+
+/* -------- demo2 --------- */
+
+.demo2 {
+  position: relative;
+}
+
+.red.demo2 {
+  transform: translate(25%, -25%);
+}
+
+/* -------- demo3 --------- */
+.demo3 {
+  position: relative;
+}
+
+.blue.demo3 {
+  z-index: 2;
+  opacity: 0.99;
+}
+
+.red.demo3 {
+  transform: translate(25%, -25%);
+  z-index: 1;
+}
+
+/* -------- demo4 --------- */
+.demo4 {
+  position: relative;
+}
+
+.red.demo4 {
+  transform: translate(25%, -25%);
+  z-index: -1;
+}
+
+/* -------- demo5 --------- */
+.blue.parent.demo5 {
+  position: unset;
+}
+
+.red.child.demo5 {
+  position: relative;
+  transform: translate(25%, -25%);
+  z-index: -1;
+}
+
+/* -------- demo6 --------- */
+.blue.parent.demo6 {
+  position: unset;
+  z-index: 999;
+}
+
+.red.child.demo6 {
+  position: relative;
+  transform: translate(25%, -25%);
+  z-index: 1;
+}
+
+/* -------- demo7 --------- */
+.demo7 {
+  position: relative;
+}
+
+.uncle.demo7 {
+  z-index: 1;
+}
+
+.cousin.demo7 {
+  z-index: 999;
+  transform: translate(25%, 25%);
+}
+
+.father.demo7 {
+  z-index: auto;
+}
+
+.you.demo7 {
+  z-index: -1;
+  transform: translate(50%, -25%);
+}
+
+/* -------- demo8 --------- */
+
+.uncle.demo8 {
+  position: relative;
+}
+
+.father.demo8 {
+  position: unset;
+}
+
+.you.demo8 {
+  position: relative;
+  transform: translate(75%, -25%);
+}
+
+/* -------- demo9 --------- */
+
+.uncle.demo9 {
+  position: relative;
+  z-index: 2;
+}
+
+.father.demo9 {
+  position: unset;
+  z-index: 3;
+}
+
+.you.demo9 {
+  position: relative;
+  transform: translate(75%, -25%);
+  z-index: 1;
+}
