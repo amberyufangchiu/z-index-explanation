@@ -1,61 +1,144 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", "Segoe UI", sans-serif;
+  background: #e0e5ec;
+  color: #2c3e50;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  height: 100vh;
+}
+
+.side-nav {
+  flex-shrink: 0;
+  width: 240px;
+  background: #e0e5ec;
+  padding: 2em 1.5em;
+  border-radius: 20px;
+  box-shadow: 8px 8px 16px #c5cad3, -8px -8px 16px #fff;
+  display: flex;
+  flex-direction: column;
+  margin: 2em;
+  height: fit-content;
+}
+
+.side-nav h2 {
+  font-size: 1.2em;
+  margin-bottom: 1.5em;
+  text-align: center;
+  color: #1e1e1e;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.side-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.side-nav li {
+  margin-bottom: 1em;
+}
+
+.side-nav a {
+  display: block;
+  padding: 0.7em 1em;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #2c3e50;
+  background: #e0e5ec;
+  box-shadow: inset 2px 2px 5px #c5cad3, inset -2px -2px 5px #ffffff;
+  transition: 0.2s;
+  font-weight: 500;
+  text-align: center;
+}
+
+.side-nav a:hover {
+  box-shadow: inset 1px 1px 3px #c5cad3, inset -1px -1px 3px #ffffff;
+  color: #1f2a38;
+}
+
+main {
+  flex-grow: 1;
+  padding: 2em;
+  overflow-y: auto;
+}
+
 .container {
   display: flex;
-  margin: 4em;
   flex-direction: column;
-  height: 100%;
+  gap: 5em;
+  margin: 3em;
+  font-family: Arial, sans-serif;
 }
 
 .demo {
   display: flex;
-  flex-direction: row;
-  margin: 3em 0;
-  height: fit-content;
+  justify-content: center;
+  align-items: center;
+  gap: 3em;
+}
+
+.block {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  min-width: 300px;
+  border: 1px dashed #ccc;
 }
 
 .text {
-  margin-left: 10em;
-  display: flex;
-  flex-direction: column;
-  height: fit-content;
-  width: fit-content;
-}
-
-div {
-  width: 100px;
-  height: 100px;
-}
-
-.explain {
-  margin-left: 3em;
-}
-
-h2,
-h4 {
-  /* margin-left: 3em; */
-  white-space: nowrap;
-}
-
-h3 {
-  white-space: nowrap;
-  margin: 0;
+  min-width: 500px;
+  max-width: 500px;
 }
 
 xmp {
   margin: 0;
   background-color: #f4f4f4;
-  margin-top: 1em;
-  width: fit-content;
-  padding: 0 5em;
 }
 
-/* -------- color --------- */
+.labeled {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #333;
+  font-size: 0.85em;
+  text-align: center;
+}
 
+.tip {
+  background-color: #e6f7ff;
+  padding: 1em;
+  border-left: 4px solid #1890ff;
+  margin-top: 1em;
+  font-size: 0.9em;
+}
+
+pre code {
+  display: block;
+  background-color: #f8f8f8;
+  padding: 1em;
+  border: 1px solid #ddd;
+  overflow-x: auto;
+}
+
+/* Color Styles */
 .blue {
   background-color: #84cdee;
 }
 
 .red {
-  background-color: #eb2d3a;
+  background-color: #e14852;
+  color: white;
 }
 
 .green {
@@ -66,122 +149,183 @@ xmp {
   background-color: #fff49b;
 }
 
-/* -------- demo1 --------- */
+/* Demo Variants */
+.demo1 .blue,
+.demo1 .red {
+  width: 100px;
+  height: 100px;
+}
 
-.demo1 {
+.demo1 .red {
   transform: translate(25%, -25%);
 }
 
-/* -------- demo2 --------- */
-
-.demo2 {
+.demo2 .blue,
+.demo2 .red {
   position: relative;
+  width: 100px;
+  height: 100px;
 }
 
-.red.demo2 {
+.demo2 .red {
   transform: translate(25%, -25%);
 }
 
-/* -------- demo3 --------- */
-.demo3 {
+.demo3 .blue,
+.demo3 .red {
   position: relative;
+  width: 100px;
+  height: 100px;
 }
 
-.blue.demo3 {
+.demo3 .blue {
   z-index: 2;
-  opacity: 0.99;
 }
 
-.red.demo3 {
+.demo3 .red {
   transform: translate(25%, -25%);
   z-index: 1;
 }
 
-/* -------- demo4 --------- */
-.demo4 {
+.demo4 .blue,
+.demo4 .red {
   position: relative;
+  width: 100px;
+  height: 100px;
 }
 
-.red.demo4 {
+.demo4 .red {
   transform: translate(25%, -25%);
   z-index: -1;
 }
 
-/* -------- demo5 --------- */
-.blue.parent.demo5 {
+.demo5 .blue {
   position: unset;
+  width: 100px;
+  height: 100px;
 }
 
-.red.child.demo5 {
+.demo5 .red {
   position: relative;
   transform: translate(25%, -25%);
   z-index: -1;
+  width: 100px;
+  height: 100px;
 }
 
-/* -------- demo6 --------- */
-.blue.parent.demo6 {
+.demo6 .blue {
   position: unset;
   z-index: 999;
+  width: 100px;
+  height: 100px;
 }
 
-.red.child.demo6 {
+.demo6 .red {
   position: relative;
   transform: translate(25%, -25%);
   z-index: 1;
+  width: 100px;
+  height: 100px;
 }
 
-/* -------- demo7 --------- */
-.demo7 {
+.demo7 .textbox {
+  font-weight: bold;
+  color: #333;
+  font-size: 0.85em;
+  text-align: center;
+  padding: 0.5em;
+}
+
+.demo7 .blue {
   position: relative;
-}
-
-.uncle.demo7 {
-  z-index: 1;
-}
-
-.cousin.demo7 {
-  z-index: 999;
-  transform: translate(25%, 25%);
-}
-
-.father.demo7 {
+  width: 100px;
+  height: 100px;
   z-index: 2;
 }
-
-.you.demo7 {
+.demo7 .red {
+  position: relative;
   z-index: -1;
-  transform: translate(50%, -25%);
+  transform: translate(80%, -50%);
+  width: 100px;
+  height: 100px;
+  color: white;
 }
-
-/* -------- demo8 --------- */
-
-.uncle.demo8 {
+.demo7 .green {
   position: relative;
+  z-index: 1;
+  width: 100px;
+  height: 100px;
+}
+.demo7 .yellow {
+  position: relative;
+  z-index: 1;
+  width: 100px;
+  height: 100px;
+  z-index: 999;
+  transform: translate(25%, 10%);
 }
 
-.father.demo8 {
+.demo8 .green,
+.demo8 .blue,
+.demo8 .red {
+  padding: 5px;
+  font-weight: bold;
+  color: #333;
+  font-size: 0.85em;
+  text-align: center;
+  padding: 0.5em;
+}
+
+.demo8 .green {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+
+.demo8 .blue {
   position: unset;
+  width: 100px;
+  height: 100px;
 }
 
-.you.demo8 {
+.demo8 .red {
   position: relative;
-  transform: translate(75%, -25%);
+  width: 100px;
+  height: 100px;
+  transform: translate(75%, -75%);
+  color: white;
 }
 
-/* -------- demo9 --------- */
+.demo9 .green,
+.demo9 .blue,
+.demo9 .red {
+  padding: 5px;
+  font-weight: bold;
+  color: #333;
+  font-size: 0.85em;
+  text-align: center;
+  padding: 0.5em;
+}
 
-.uncle.demo9 {
+.demo9 .green {
   position: relative;
   z-index: 2;
+  width: 100px;
+  height: 100px;
 }
 
-.father.demo9 {
-  position: unset;
+.demo9 .blue {
+  position: unset; /* This is the point of the demo */
   z-index: 3;
+  width: 100px;
+  height: 100px;
 }
 
-.you.demo9 {
+.demo9 .red {
+  color: white;
   position: relative;
-  transform: translate(75%, -25%);
   z-index: 1;
+  width: 100px;
+  height: 100px;
+  transform: translate(75%, -95%);
 }
