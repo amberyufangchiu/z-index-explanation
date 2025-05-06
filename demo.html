@@ -3,327 +3,266 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Z-index Demo</title>
-    <link rel="stylesheet" href="demo.css" />
+    <title>Z-index Demo Dashboard</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <div class="container">
-      <aside class="side-nav">
+    <div class="wrapper">
+      <aside class="sidebar">
         <h2>Z-Index Guide</h2>
-        <ul>
-          <li><a href="#demo1">1. Web Default</a></li>
-          <li><a href="#demo2">2. Positioned (No Z-index)</a></li>
-          <li><a href="#demo3">3. Z-index Comparison</a></li>
-          <li><a href="#demo4">4. Negative Z-index</a></li>
-          <li><a href="#demo5">5. Parent Unset, Child -1</a></li>
-          <li><a href="#demo6">6. Parent + Child Z-index</a></li>
-          <li><a href="#demo7">7. Sibling Nesting</a></li>
-          <li><a href="#demo8">8. Cross-Stacking</a></li>
-          <li><a href="#demo9">9. Unset Parent</a></li>
-        </ul>
+        <nav>
+          <a href="#example1">Web Default</a>
+          <a href="#example2">Relative Position</a>
+          <a href="#example3">Z-Index Stacking</a>
+          <a href="#example4">Negative Z</a>
+          <a href="#example5">Parent/Child</a>
+          <a href="#example6">Parent vs Child</a>
+          <a href="#example7">Nested Elements</a>
+          <a href="#example8">Uncle Overlap</a>
+          <a href="#example9">No Positioning</a>
+        </nav>
       </aside>
-      <!-- Example 1 -->
-      <div class="demo demo1">
-        <div class="block">
-          <div class="blue labeled">Blue</div>
-          <div class="red labeled">Red (Translated)</div>
-        </div>
-        <div class="text">
-          <h3>🌿 Web Default: No Position, No Z-index</h3>
-          <pre><code>&lt;div class="blue"&gt;&lt;/div&gt;
-&lt;div class="red"&gt;&lt;/div&gt;</code></pre>
-          <pre><code>.red {
-  transform: translate(25%, -25%);
-}</code></pre>
-          <div class="tip">
-            By default, later elements in the DOM stack on top of earlier ones.
-            No z-index or position needed.
+
+      <main class="main">
+        <div class="demo demo1">
+          <div class="block">
+            <div class="blue labeled">Blue</div>
+            <div class="red labeled">Red (Translated)</div>
+          </div>
+          <div class="text">
+            <h3>🌿 Web Default: No Position, No Z-index</h3>
+
+            <div class="code">
+              <div class="code-block">
+                <span class="badge orange">HTML</span>
+                <xmp>
+<div class="blue"></div>
+<div class="red"></div>
+                    </xmp>
+              </div>
+
+              <div class="code-block">
+                <span class="badge blue-dark">CSS</span>
+                <pre><code>.red {
+    transform: translate(25%, -25%);
+}
+                </code></pre>
+              </div>
+            </div>
+
+            <div class="tip">
+              By default, later elements in the DOM stack on top of earlier
+              ones. No z-index or position needed.
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Example 2 -->
-      <div class="demo demo2">
-        <div class="block">
-          <div class="blue labeled">Blue</div>
-          <div class="red labeled">Red (Translated)</div>
-        </div>
-        <div class="text">
-          <h3>🧱 Both Positioned (Relative), No Z-index</h3>
-          <pre><code>div {
+        <div class="demo demo2">
+          <div class="block">
+            <div class="blue labeled">Blue</div>
+            <div class="red labeled">Red (Translated)</div>
+          </div>
+          <div class="text">
+            <h3>🧱 Both Positioned (Relative), No Z-index</h3>
+
+            <div class="code">
+              <div class="code-block">
+                <span class="badge orange">HTML</span>
+                <xmp>
+<div class="blue"></div>
+<div class="red"></div>
+                    </xmp>
+              </div>
+
+              <div class="code-block">
+                <span class="badge blue-dark">CSS</span>
+                <pre><code>div {
   position: relative;
 }
 .red {
   transform: translate(25%, -25%);
-}</code></pre>
-          <div class="tip">
-            Positioning elements (e.g., relative) without z-index still stacks
-            later elements on top.
-          </div>
-        </div>
-      </div>
+}
+                </code></pre>
+              </div>
+            </div>
 
-      <!-- Example 3 -->
-      <div class="demo demo3">
-        <div class="block">
-          <div class="blue labeled">
-            Blue <br />
-            (z-index: 2)
-          </div>
-          <div class="red labeled">
-            Red <br />
-            (z-index: 1)
+            <div class="tip">
+              Positioning elements (e.g., relative) without z-index still stacks
+              later elements on top.
+            </div>
           </div>
         </div>
-        <div class="text">
-          <h3>🔢 Both Positioned, Both Set Z-index</h3>
-          <pre><code>.blue {
+
+        <div class="demo demo3">
+          <div class="block">
+            <div class="blue labeled">
+              Blue <br />
+              (z-index: 2)
+            </div>
+            <div class="red labeled">
+              Red <br />
+              (z-index: 1)
+            </div>
+          </div>
+          <div class="text">
+            <h3>🔢 Both Positioned, Both Set Z-index</h3>
+
+            <div class="code">
+              <div class="code-block">
+                <span class="badge orange">HTML</span>
+                <xmp>
+<div class="blue"></div>
+<div class="red"></div>
+                    </xmp>
+              </div>
+
+              <div class="code-block">
+                <span class="badge blue-dark">CSS</span>
+                <pre><code>.blue {
   z-index: 2;
 }
 .red {
   z-index: 1;
-}</code></pre>
-          <div class="tip">
-            Z-index determines stacking order when both elements are positioned.
-            Higher z-index appears on top.
-          </div>
-        </div>
-      </div>
+}
+                </code></pre>
+              </div>
+            </div>
 
-      <!-- Example 4 -->
-      <div class="demo demo4">
-        <div class="block">
-          <div class="blue labeled">Blue</div>
-          <div class="red labeled">
-            Red <br />
-            (z-index: -1)
+            <div class="tip">
+              Z-index determines stacking order when both elements are
+              positioned. Higher z-index appears on top.
+            </div>
           </div>
         </div>
-        <div class="text">
-          <h3>⬇️ One Element with Negative Z-index</h3>
-          <pre><code>.red {
+
+        <div class="demo demo4">
+          <div class="block">
+            <div class="blue labeled">Blue</div>
+            <div class="red labeled">
+              Red <br />
+              (z-index: -1)
+            </div>
+          </div>
+          <div class="text">
+            <h3>⬇️ One Element with Negative Z-index</h3>
+
+            <div class="code">
+              <div class="code-block">
+                <span class="badge orange">HTML</span>
+                <xmp>
+<div class="blue"></div>
+<div class="red"></div>
+                    </xmp>
+              </div>
+
+              <div class="code-block">
+                <span class="badge blue-dark">CSS</span>
+                <pre><code>.red {
   z-index: -1;
-}</code></pre>
-          <div class="tip">
-            Red has a lower stacking order, so it goes behind Blue.
-          </div>
-        </div>
-      </div>
+}
+                </code></pre>
+              </div>
+            </div>
 
-      <!-- Example 5 -->
-      <div class="demo demo5">
-        <div class="block">
-          <div class="blue labeled">
-            Parent <br />
-            (unset)
-          </div>
-          <div class="red labeled">
-            Child <br />
-            (z-index: -1)
+            <div class="tip">
+              Red has a lower stacking order, so it goes behind Blue.
+            </div>
           </div>
         </div>
-        <div class="text">
-          <h3>👨‍👧 Parent Without Position, Child With Negative Z-index</h3>
-          <pre><code>.blue {
+
+        <div class="demo demo5">
+          <div class="block">
+            <div class="blue labeled">
+              Parent <br />
+              (unset)
+              <div class="red labeled">
+                Child <br />
+                (z-index: -1)
+              </div>
+            </div>
+          </div>
+          <div class="text">
+            <h3>👨‍👧 Parent Without Position, Child With Negative Z-index</h3>
+
+            <div class="code">
+              <div class="code-block">
+                <span class="badge orange">HTML</span>
+                <xmp>
+<div class="blue">
+  <div class="red"></div>
+</div>
+                    </xmp>
+              </div>
+
+              <div class="code-block">
+                <span class="badge blue-dark">CSS</span>
+                <pre><code>.blue {
     position: unset;
     /* NO setting z-index */
 }
 .red {
     position: relative;
     z-index: -1;
-}</code></pre>
-          <div class="tip">
-            If parent is not positioned but child is with a negative z-index,
-            parent will visually appear above child.
-          </div>
-        </div>
-      </div>
-      <!-- Example 6 -->
-      <div class="demo demo6">
-        <div class="block">
-          <div class="blue labeled">
-            Parent <br />
-            (z-index: 999)
-          </div>
-          <div class="red labeled">
-            Child <br />
-            (z-index: 1)
-          </div>
-        </div>
-        <div class="text">
-          <h3>🔁 Parent and Child Both Set Z-index</h3>
-          <pre><code>.blue {
-    position: unset;
-    z-index: 999;
-}
-
-.red {
-    position: relative;
-    z-index: 1;
-}
-        </code></pre>
-          <div class="tip">
-            Child is inside parent and will still render above the parent
-            background regardless of z-index values.
-          </div>
-        </div>
-      </div>
-
-      <!-- Example 7 -->
-      <div class="demo demo7">
-        <div class="block">
-          <div class="green textbox">
-            Uncle <br />(z-index: 1)
-            <div class="yellow textbox">
-              Cousin <br />
-              (z-index: 999)
-            </div>
-          </div>
-          <div class="blue textbox">
-            Father <br />
-            (z-index: 2)
-            <div class="red textbox">
-              You <br />
-              (z-index: -1)
-            </div>
-          </div>
-        </div>
-        <div class="text">
-          <h3>🧱 Nested Elements Within Sibling Groups</h3>
-          <xmp>
-    <div class="green">
-        <div class="yellow"></div>
-    </div>
-    <div class="blue">
-        <div class="red"></div>
-    </div>
-            </xmp>
-          <pre><code>.green {
-    position: relative;
-    z-index: 1;
-}
-
-.yellow {
-    position: relative;
-    z-index: 999;
-    transform: translate(25%, 10%);
-}
-
-.blue {
-    position: relative;
-    z-index: 2;
-}
-
-.red {
-    position: relative;
-    z-index: -1;
-    transform: translate(80%, -50%);
-}
-          </code></pre>
-          <div class="tip">
-            Even though <code>.yellow</code> has a higher z-index than
-            <code>.red</code>, it cannot appear above <code>.blue</code> (its
-            parent) because its own parent <code>.green</code> has a lower
-            z-index.<br /><br />
-            👉 A child is restricted to the stacking level of its parent.
-          </div>
-        </div>
-      </div>
-
-      <!-- Example 8 -->
-      <div class="demo demo8">
-        <div class="block">
-          <div class="green">Uncle (relative)</div>
-          <div class="blue">
-            Father (unset)
-            <div class="red">You (relative)</div>
-          </div>
-        </div>
-
-        <div class="text">
-          <h3>🔀 Child and Uncle Set Position</h3>
-          <xmp>
-    <div class="green uncle"></div>
-
-    <div class="blue father">
-        <div class="red you"></div>
-    </div>
-          </xmp>
-          <pre><code>.green {
-    position: relative;
-}
-
-.blue {
-    position: unset;
-}
-
-.red {
-    position: relative;
-    transform: translate(75%, -75%);
-}
-          </code></pre>
-          <div class="tip">
-            Since <code>.blue</code> (Father) does not have a positioning
-            context, <code>.red</code> (You) is compared directly against
-            <code>.green</code> (Uncle) in the stacking order.<br /><br />
-            👉 That means <code>.red</code> can visually overlap
-            <code>.green</code>, even though it's nested inside
-            <code>.blue</code>.
-          </div>
-        </div>
-      </div>
-
-      <!-- Example 9 -->
-      <div class="demo demo9">
-        <div class="block">
-          <div class="green">
-            Uncle <br />
-            (z-index: 2)
-          </div>
-          <div class="blue">
-            Father <br />
-            (z-index: 3, unset)
-            <div class="red">
-              You <br />
-              (z-index: 1)
-            </div>
-          </div>
-        </div>
-
-        <div class="text">
-          <h3>🎯 All Set z-index, but Parent Has No Position</h3>
-          <xmp>
-    <div class="green"></div>
-    <div class="blue">
-        <div class="red"></div>
-    </div>
-          </xmp>
-          <pre><code>.green {
-    position: relative;
-    z-index: 2;
-}
-
-.blue {
-    position: unset;
-    z-index: 3;
-}
-
-.red {
-    position: relative;
-    z-index: 1;
-    transform: translate(75%, -95%);
 }
             </code></pre>
-          <div class="tip">
-            Even though <code>.blue</code> (Father) has a higher z-index, it
-            doesn’t participate in stacking because it lacks a
-            <code>position</code>.<br /><br />
-            👉 That means <code>.green</code> (Uncle) and
-            <code>.red</code> (You) are compared directly. <code>.red</code> can
-            appear under <code>.green</code> depending on z-index.
+              </div>
+            </div>
+
+            <div class="tip">
+              If parent is not positioned but child is with a negative z-index,
+              parent will visually appear above child.
+            </div>
           </div>
         </div>
-      </div>
+
+        <div class="demo demo6">
+          <div class="block">
+            <div class="blue labeled">
+              Parent <br />
+              (z-index: 999)
+              <div class="red labeled">
+                Child <br />
+                (z-index: 1)
+              </div>
+            </div>
+          </div>
+          <div class="text">
+            <h3>🔁 Parent and Child Both Set Z-index</h3>
+            <div class="code">
+              <div class="code-block">
+                <span class="badge orange">HTML</span>
+                <xmp>
+<div class="blue">
+  <div class="red"></div>
+</div>
+                    </xmp>
+              </div>
+
+              <div class="code-block">
+                <span class="badge blue-dark">CSS</span>
+                <pre><code>.blue {
+    position: unset;
+    z-index: 999;
+}
+
+.red {
+    position: relative;
+    z-index: 1;
+}
+                </code></pre>
+              </div>
+            </div>
+
+            <div class="tip">
+              Child is inside parent and will still render above the parent
+              background regardless of z-index values.
+            </div>
+          </div>
+        </div>
+      </main>
     </div>
   </body>
 </html>
