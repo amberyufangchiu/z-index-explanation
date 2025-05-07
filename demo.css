@@ -8,6 +8,10 @@
   --hover: #f0f4fa;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -20,6 +24,7 @@ body {
   color: var(--text);
   height: 100vh;
   overflow: hidden;
+  display: flex;
 }
 
 .wrapper {
@@ -138,6 +143,17 @@ pre {
   background-color: #2d5dd2;
 }
 
+.block p {
+  font-weight: bold;
+  font-size: 1em;
+  text-align: center;
+  padding-top: 0.5em;
+}
+
+.block .red {
+  color: rgb(245, 229, 229);
+}
+
 /* -------- */
 
 :root {
@@ -159,17 +175,14 @@ pre {
 
 .block {
   position: relative;
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
   border-radius: 12px;
   border: 1px dashed var(--border);
   padding: 0.6rem;
 }
 
 .labeled {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   font-weight: bold;
   color: #333;
   font-size: 0.85em;
@@ -237,6 +250,7 @@ xmp {
 .demo3 .red {
   transform: translate(25%, -25%);
   z-index: 1;
+  padding-top: 25px;
 }
 
 .demo4 .blue,
@@ -247,8 +261,9 @@ xmp {
 }
 
 .demo4 .red {
-  transform: translate(50%, -25%);
+  transform: translate(25%, -25%);
   z-index: -1;
+  padding-top: 25px;
 }
 
 .demo5 .blue {
@@ -259,10 +274,11 @@ xmp {
 
 .demo5 .red {
   position: relative;
-  transform: translate(25%, -25%);
+  transform: translate(50%, 30%);
   z-index: -1;
   width: 100px;
   height: 100px;
+  padding-top: 25px;
 }
 
 .demo6 .blue {
@@ -274,7 +290,7 @@ xmp {
 
 .demo6 .red {
   position: relative;
-  transform: translate(25%, -25%);
+  transform: translate(50%, 30%);
   z-index: 1;
   width: 100px;
   height: 100px;
@@ -297,7 +313,7 @@ xmp {
 .demo7 .red {
   position: relative;
   z-index: -1;
-  transform: translate(80%, -50%);
+  transform: translate(85%, -30%);
   width: 100px;
   height: 100px;
   color: white;
@@ -314,7 +330,7 @@ xmp {
   width: 100px;
   height: 100px;
   z-index: 999;
-  transform: translate(25%, 10%);
+  transform: translate(25%, 5%);
 }
 
 .demo8 .green,
